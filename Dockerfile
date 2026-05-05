@@ -2,7 +2,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Force cache invalidation - v4
+# Force cache invalidation - v6
 RUN echo "Building fresh art service..."
 
 # Install git for the samsung-tv-ws-api fork
@@ -15,7 +15,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the script
-COPY daily_art.py .
+COPY art_service.py .
 
 # Create volume for data (token persistence)
 RUN mkdir -p /app/data
@@ -25,4 +25,4 @@ ENV TV_IP=192.168.1.100
 ENV DEPT_ID=11
 ENV INTERVAL=86400
 
-CMD ["python", "daily_art.py"]
+CMD ["python", "art_service.py"]
