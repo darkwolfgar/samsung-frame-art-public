@@ -1,0 +1,12 @@
+services:
+  frame-art:
+    build: .
+    container_name: frame_art_updater
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    environment:
+      - TV_IP=192.168.1.100  # REPLACE WITH YOUR TV IP
+      - DEPT_ID=11          # European Paintings
+      - INTERVAL=86400      # 24 hours
+      - PYTHONUNBUFFERED=1
